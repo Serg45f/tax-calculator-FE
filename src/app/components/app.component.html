@@ -1,0 +1,32 @@
+<div class="max-w-2xl container mx-auto pt-5 ">
+    <h1 class="mb-2 font-bold text-center text-lg">{{ title }}</h1>
+    <div class="border rounded flex-row mb-2">
+
+        <div class="py-5 px-4 font-bold text-md">
+            <form (ngSubmit)="onSubmit(testForm)" #testForm="ngForm">
+                Enter Gross Annual Salary here, £:
+                <input type="number"
+                    class="form-control border py-2 my-2 mx-4 rounded"
+                    [(ngModel)]="annualSalary"
+                    name="annualSalary"
+                    value="annualSalary"
+                    />
+                <button type="submit"  class="border py-2  px-3 my-2 mx-4 rounded bg-yellow-400 allign-right"
+                (click)="result()"
+            >Calculate</button>
+             </form>
+        </div>
+
+
+        <div *ngIf="isInput" class="text-lg px-4 py-5">
+            <h1 class="font-bold">RESULTS:</h1>
+            <p>Gross Annual Salary: <span class="font-bold">{{ taxSalaryResult.grossAnnualSalary | currency:'GBP' }}</span></p>
+            <p>Gross Monthly Salary: <span class="font-bold">{{ taxSalaryResult.grossMonthlySalary | currency:'GBP' }}</span></p>
+            <p>Net Annual Salary: <span class="font-bold">{{ taxSalaryResult.netAnnualSalary | currency:'GBP' }}</span></p>
+            <p>Net Monthly Salary:  <span class="font-bold">{{ taxSalaryResult.netMonthlySalary | currency:'GBP'}}</span></p>
+            <p>Annual Tax Paid: <span class="font-bold">{{ taxSalaryResult.annualTaxPaid | currency:'GBP'}}</span></p>
+            <p>Monthly Tax Paid: <span class="font-bold">{{ taxSalaryResult.monthlyTaxPaid | currency:'GBP'}}</span></p>
+        </div>
+    </div>
+</div>
+
